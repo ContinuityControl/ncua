@@ -31,20 +31,15 @@ Currently all of our features are namespaced under the `NCUA` module.
 The NCUA lets you find a Credit Union office by its name, charter number, or within an address:
 
 ```ruby
-  credit_unions = NCUA.find_by(name: 'Federal')  #=> [NCUA::CreditUnion, ... ]
+  credit_unions = NCUA.find_by_name('Federal')  #=> [NCUA::CreditUnion, ... ]
 ```
 
-You can `find_by` `name:`, `address:`, `charter_number:`. If you try to call this with more than one key, no key, or an invalid key, it will raise an exception:
-
+You can `find_by` `name`, `address`, `charter_number`. Searching by address takes an optional radius argument to limit the scope of the address query (units are in miles):
 ```ruby
-  credit_unions = NCUA.find_by(name: 'Federal', charter_number: 12345)
-  # raises NCUA::TooManyArgumentsError
+  credit_unions = NCUA.find_by_charter_number(12345)  #=> [NCUA::CreditUnion, ... ]
+
+  credit_unions = NCUA.find_by_address("125 Main St., Anywhere, CT", radius: 50)  #=> [NCUA::CreditUnion, ... ]
   
-  credit_unions = NCUA.find_by()
-  # raises NCUA::NoArgumentError
-  
-  credit_unions = NCUA.find_by(asset_size: 100_000)
-  # raises NCUA::InvalidArgumentError
 ```
 
 Right now, an `NCUA::CreditUnion` has all of the following getters:
