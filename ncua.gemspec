@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{A Ruby client for the NCUA's "Find a Credit Union tool"}
   spec.description   = %q{The NCUA recently started using asynchronous json requests in their Find a Credit Union tool. We make that query-able from Ruby.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.license       = "MIT"
 
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
