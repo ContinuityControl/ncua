@@ -43,6 +43,7 @@ You can `find_by` `name`, `address`, `charter_number`. Searching by address take
 
 Right now, an `NCUA::CreditUnion` has all of the following getters:
 
+ ```
  | --------------------------- | ------------------------------------------------------------- |
  | Method                      | Explanation                                                   |
  | --------------------------- | ------------------------------------------------------------- |
@@ -55,7 +56,7 @@ Right now, an `NCUA::CreditUnion` has all of the following getters:
  | country                     | The Credit Union's Country                                    |
  | main_office?                | Whether the Credit Union office is the Main Office            |
  | phone                       | The Credit Union's phone number                               |
- | site_functions              | The Credit Union's Site functions.\*                          |
+ | site_functions              | The Credit Union's Site functions.*                           |
  | site_id                     | The Credit Union's Site ID                                    |
  | state                       | The Credit Union's State                                      |
  | url                         | The Credit Union's Url                                        |
@@ -64,7 +65,8 @@ Right now, an `NCUA::CreditUnion` has all of the following getters:
  | street                      | The Credit Union's Street address                             |
  | --------------------------- | ------------------------------------------------------------- |
 
-\*Currently these are limited to `Member Services`, `Drive Through` and `ATM`
+*Currently these are limited to `Member Services`, `Drive Through` and `ATM`
+```
 
 ## Contributing
 
