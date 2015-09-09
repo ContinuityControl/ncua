@@ -4,6 +4,7 @@ module NCUA
 
     base_uri 'http://mapping.ncua.gov'
     format :json
+    #debug_output $stderr
 
     def find_credit_union_by_address(address, radius)
       self.class.get(query_endpoint, query: {
