@@ -26,7 +26,7 @@ Or install it yourself as:
 ```
 ## Usage
 
-Currently all of our features are namespaced under the `NCUA` module
+Currently all of our features are namespaced under the `NCUA` module.
 
 The NCUA lets you find a Credit Union office by its name, charter number, or within an address:
 
