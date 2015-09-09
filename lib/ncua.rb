@@ -1,8 +1,10 @@
 require 'httparty'
+require 'nokogiri'
 require 'ncua/version'
 require 'ncua/client'
 require 'ncua/record'
 require 'ncua/credit_union'
+require 'ncua/scraper'
 
 module NCUA
   def self.find_by_address(address, opts={radius: 100})

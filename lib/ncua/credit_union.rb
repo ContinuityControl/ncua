@@ -16,5 +16,13 @@ module NCUA
     field :zip, 'Zipcode'
     field(:distance_from_query_address, 'distance') { |value| nil if value < 0 }
     field(:street, 'Street', &:strip)
+
+    def munge!
+      @scraped_attributes ||= Scraper.new(charter_number).scrape!
+    end
+
+    def additional_attributes
+      @scraped_attributes
+    end
   end
 end
