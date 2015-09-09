@@ -5,10 +5,11 @@ module NCUA
     base_uri 'http://mapping.ncua.gov'
     format :json
 
-    def find_credit_union_by_address(address)
+    def find_credit_union_by_address(address, radius)
       self.class.get(query_endpoint, query: {
         address: address,
-        type: 'address' })
+        type: 'address',
+        radius: radius.to_s })
     end
 
     def find_credit_union_by_name(name)
