@@ -39,31 +39,30 @@ You can `find_by` `name`, `address`, `charter_number`. Searching by address take
   credit_unions = NCUA.find_by_charter_number(12345)  #=> [NCUA::CreditUnion, ... ]
 
   credit_unions = NCUA.find_by_address("125 Main St., Anywhere, CT", radius: 50)  #=> [NCUA::CreditUnion, ... ]
-  
 ```
 
 Right now, an `NCUA::CreditUnion` has all of the following getters:
 
- | ----------------------------- | ------------------------------------------------------------- |
- | Method                        | Explanation                                                   |
- | ----------------------------- | ------------------------------------------------------------- |
- | `name`                        | The Credit Union's Name                                       |
- | `long`                        | The Longitude of the Credit Union                             |
- | `lat`                         | The Latitude of the Credit Union                              |
- | `site_name`                   | The name of the Credit Union office or branch                 |
- | `charter_number`              | The Credit Union's Charter Number                             |
- | `city`                        | The Credit Union's City                                       |
- | `country`                     | The Credit Union's Country                                    |
- | `main_office?`                | Whether the Credit Union office is the Main Office            |
- | `phone`                       | The Credit Union's phone number                               |
- | `site_functions`              | The Credit Union's Site functions.\*                           |
- | `site_id`                     | The Credit Union's Site ID                                    |
- | `state`                       | The Credit Union's State                                      |
- | `url`                         | The Credit Union's Url                                        |
- | `zip`                         | The Credit Union's Zip Code                                   |
- | `distance_from_query_address` | The Distance between the queried address and the Credit Union |
- | `street`                      | The Credit Union's Street address                             |
- | ----------------------------- | ------------------------------------------------------------- |
+ | --------------------------- | ------------------------------------------------------------- |
+ | Method                      | Explanation                                                   |
+ | --------------------------- | ------------------------------------------------------------- |
+ | name                        | The Credit Union's Name                                       |
+ | long                        | The Longitude of the Credit Union                             |
+ | lat                         | The Latitude of the Credit Union                              |
+ | site_name                   | The name of the Credit Union office or branch                 |
+ | charter_number              | The Credit Union's Charter Number                             |
+ | city                        | The Credit Union's City                                       |
+ | country                     | The Credit Union's Country                                    |
+ | main_office?                | Whether the Credit Union office is the Main Office            |
+ | phone                       | The Credit Union's phone number                               |
+ | site_functions              | The Credit Union's Site functions.\*                          |
+ | site_id                     | The Credit Union's Site ID                                    |
+ | state                       | The Credit Union's State                                      |
+ | url                         | The Credit Union's Url                                        |
+ | zip                         | The Credit Union's Zip Code                                   |
+ | distance_from_query_address | The Distance between the queried address and the Credit Union |
+ | street                      | The Credit Union's Street address                             |
+ | --------------------------- | ------------------------------------------------------------- |
 
 \*Currently these are limited to `Member Services`, `Drive Through` and `ATM`
 
