@@ -8,3 +8,4 @@ ncua-*.gem
 /pkg/
 /spec/reports/
 /tmp/
+/private/
