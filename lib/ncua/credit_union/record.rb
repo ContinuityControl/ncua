@@ -11,7 +11,11 @@ module NCUA
       def self.field(method_name, response_key=method_name, &munger)
         munger ||= lambda { |x| x }
         define_method(method_name) {
-          value = attributes[response_key.to_s]
+          if response_key.is_a? Symbol
+            value = attributes[response_key]
+          else
+            value = attributes[response_key.to_s]
+          end
           value && munger.call(value)
         }
       end

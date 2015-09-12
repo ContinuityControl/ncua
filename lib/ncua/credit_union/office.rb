@@ -18,12 +18,14 @@ module NCUA
       field(:distance_from_query_address, 'distance') { |value| nil if value < 0 }
       field(:street, 'Street', &:strip)
 
-      def munge!
-        @scraped_attributes ||= Scraper.new(charter_number).scrape!
+      def details
+        @details ||= Details.new(get_details!)
       end
 
-      def additional_attributes
-        @scraped_attributes
+      private
+
+      def get_details!
+        @scraped_attributes ||= Scraper.new(charter_number).scrape!
       end
     end
   end
