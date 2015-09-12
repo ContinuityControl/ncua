@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NCUA::CreditUnion do
+describe NCUA::CreditUnion::Office do
   let(:response) {
     {
       "AddressLatitude" => 38.367217,
@@ -25,7 +25,7 @@ describe NCUA::CreditUnion do
     }
   }
 
-  let(:credit_union) { NCUA::CreditUnion.new(response) }
+  let(:credit_union) { NCUA::CreditUnion::Office.new(response) }
 
   it 'parses data correctly' do
     expect(credit_union.name).to eq("SOUTH CHARLESTON EMPLOYEES")

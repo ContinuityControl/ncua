@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NCUA::Scraper do
+describe NCUA::CreditUnion::Scraper do
   context "given messy html" do
     let(:html) { %q(
   <table id="MainContent_newDetails">
@@ -25,7 +25,7 @@ describe NCUA::Scraper do
   </tbody></table>
                  ) }
 
-    let(:scraper) { NCUA::Scraper.new(62599) }
+    let(:scraper) { NCUA::CreditUnion::Scraper.new(62599) }
 
     it "strips whitespace from values" do
       allow(scraper).to receive(:html_doc).and_return(Nokogiri::HTML(html))
