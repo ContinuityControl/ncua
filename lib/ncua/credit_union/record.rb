@@ -24,12 +24,6 @@ module NCUA
         field(method_name, response_key, &:to_i)
       end
 
-      def self.currency_field(method_name, response_key=method_name)
-        field(method_name, response_key) { |value|
-          value.to_f * 1000
-        }
-      end
-
       def self.date_field(method_name, response_key=method_name)
         field(method_name, response_key) { |value|
           Date.parse(value)
