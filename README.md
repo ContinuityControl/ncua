@@ -28,20 +28,20 @@ Or install it yourself as:
 
 Currently all of our features are namespaced under the `NCUA` module.
 
-The NCUA lets you find a Credit Union office by its name, charter number, or within an address:
+The NCUA lets you find a Credit Union Office by its name, charter number, or within an address:
 
 ```ruby
-  credit_unions = NCUA.find_by_name('Federal')  #=> [NCUA::CreditUnion, ... ]
+  credit_unions = NCUA.find_office_by_name('Federal')  #=> [NCUA::CreditUnion::Office, ... ]
 ```
 
-You can `find_by` `name`, `address`, `charter_number`. Searching by address takes an optional radius argument to limit the scope of the address query (units are in miles):
+You can also find an office by `name`, `address`, `charter_number`. Searching by address takes an optional radius argument to limit the scope of the address query (units are in miles):
 ```ruby
-  credit_unions = NCUA.find_by_charter_number(12345)  #=> [NCUA::CreditUnion, ... ]
+  credit_unions = NCUA.find_office_by_charter_number(12345)  #=> [NCUA::CreditUnion::Office, ... ]
 
-  credit_unions = NCUA.find_by_address("125 Main St., Anywhere, CT", radius: 50)  #=> [NCUA::CreditUnion, ... ]
+  credit_unions = NCUA.find_office_by_address("125 Main St., Anywhere, CT", radius: 50)  #=> [NCUA::CreditUnion::Office, ... ]
 ```
 
-Right now, an `NCUA::CreditUnion` has all of the following getters:
+Right now, an `NCUA::CreditUnion::Office` has all of the following getters:
 
  ```
  | --------------------------- | ------------------------------------------------------------- |
@@ -67,6 +67,42 @@ Right now, an `NCUA::CreditUnion` has all of the following getters:
 
 *Currently these are limited to `Member Services`, `Drive Through` and `ATM`
 ```
+
+`NCUA::CreditUnion::Office` also exposes a `#details` method. This scrapes the NCUA's show page for a particular credit union, and returns an `NCUA::CreditUnion::Details` object. This object contains the details of a particular Credit Union, instead of a particular office location.
+
+Keep in mind, this _scrapes_ data from html, so this might break regularly.
+
+Right now, an `NCUA::CreditUnion::Details` object has the following getters:
+```
+        | field                      | description                                                                                                  |
+        | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+        | credit_union_name          | The Credit Union's name                                                                                      |
+        | charter_number             | The Credit Union's NCUA charter number                                                                       |
+        | credit_union_type          | The Type of Credit Union (Either Federal Credit Union [FCU] or Federally Insured State Credit Union [FISCU]) |
+        | active?                    | Whether the Credit Union is active or not                                                                    |
+        | corporate_credit_union?    | Whether the Credit Union is a corporate credit union or not                                                  |
+        | credit_union_charter_year  | The year the Credit Union was chartered                                                                      |
+        | current_charter_issue_date | The date the current charter was issued                                                                      |
+        | date_insured               | The date that the Credit Union was insured as of                                                             |
+        | charter_state              | The charter state of the Credit Union                                                                        |
+        | region                     | The Credit Union's region                                                                                    |
+        | field_of_membership_type   | The Credit Union's field of membership type                                                                  |
+        | low_income_designation?    | Whether the Credit Union has low income designation                                                          |
+        | member_of_fhlb?            | Whether the Credit Union is a member of the Federal Home Loan Bank System                                    |
+        | assets                     | The total assets of the Credit Union, as a floating point decimal                                            |
+        | peer_group                 | The Credit Union's Peer Group                                                                                |
+        | number_of_members          | The Credit Union's number of Members                                                                         |
+        | address                    | The street address of the Credit Union                                                                       |
+        | city_state_zip_code        | The City, State and Zip code of the Credit Union                                                             |
+        | country                    | The Country of the Credit Union                                                                              |
+        | county                     | The County of the Credit Union                                                                               |
+        | phone                      | The Phone number of the Credit Union                                                                         |
+        | website                    | The Website of the Credit Union                                                                              |
+        | ceo_or_manager             | The name of the CEO or Manager of the Credit Union                                                           |
+        | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+```
+
+You can also scrape this directly from the NCUA module by calling `NCUA.find_credit_union(charter_number)`
 
 ## Contributing
 
