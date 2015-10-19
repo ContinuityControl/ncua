@@ -108,6 +108,10 @@ Right now, an `NCUA::CreditUnion::Details` object has the following getters:
 
 You can also scrape this directly from the NCUA module by calling `NCUA.find_credit_union(charter_number)`
 
+If you pass `nil` into this method, it will raise an `ArgumentError`. The NCUA will actually return a 200 without a charter number, but the data on the page is blank.
+
+If for some reason the NCUA returns a 500 error when directly scraping for credit union details, the gem will raise `NCUA::CreditUnion::ServerError`. This can happen if your charter number is invalid.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ContinuityControl/ncua.
