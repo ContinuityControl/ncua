@@ -6,6 +6,7 @@ require 'ncua/credit_union/record'
 require 'ncua/credit_union/office'
 require 'ncua/credit_union/details'
 require 'ncua/credit_union/scraper'
+require 'ncua/credit_union/details_client'
 
 module NCUA
   def self.find_office_by_address(address, opts={radius: 100})

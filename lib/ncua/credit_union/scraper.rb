@@ -2,9 +2,6 @@ module NCUA
   module CreditUnion
     class Scraper
       #This bit is as brittle as glass, as coupled as conjoined twins, and as stinky as bad cheese
-      include HTTParty
-
-      base_uri 'http://mapping.ncua.gov'
       def initialize(charter_number)
         @charter_number = charter_number
       end
@@ -36,13 +33,7 @@ module NCUA
       end
 
       def request
-        self.class.get(endpoint, query: {
-          "ID" => @charter_number
-        })
-      end
-
-      def endpoint
-        '/SingleResult.aspx'
+        @request ||= DetailsClient.get_details(@charter_number)
       end
     end
   end
