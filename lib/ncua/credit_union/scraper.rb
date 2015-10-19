@@ -33,7 +33,7 @@ module NCUA
       end
 
       def request
-        @request ||= DetailsClient.get_details(@charter_number)
+        @request ||= DetailsClient.new.get_details(@charter_number)
       end
     end
   end
