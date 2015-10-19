@@ -6,6 +6,10 @@ module NCUA
 
       base_uri 'http://mapping.ncua.gov'
       def get_details(charter_number)
+        if charter_number.nil?
+          raise ArgumentError, "charter number cannot be nil"
+        end
+
         response = execute_query(charter_number)
 
         case response.code
