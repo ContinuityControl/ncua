@@ -1,11 +1,19 @@
 module NCUA
   module CreditUnion
+    class ServerError < ::StandardError; end
     class DetailsClient
       include HTTParty
 
       base_uri 'http://mapping.ncua.gov'
       def get_details(charter_number)
         response = execute_query(charter_number)
+
+        case response.code
+        when 200...300
+          response
+        when 500...600
+          raise ServerError
+        end
       end
 
       private
@@ -20,6 +28,5 @@ module NCUA
         })
       end
     end
-    class RecordNotFoundError < StandardError; end
   end
 end
