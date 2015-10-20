@@ -17,7 +17,7 @@ module NCUA
         when 200...300
           response
         when 500...600
-          raise ServerError
+          raise ServerError, "the NCUA returned a #{response.code} error"
         end
       end
 

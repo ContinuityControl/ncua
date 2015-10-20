@@ -19,7 +19,7 @@ describe NCUA::CreditUnion::DetailsClient do
       it 'raises an NCUA::CreditUnion::ServerError exception' do
         allow(details_client).to receive(:execute_query).and_return(error_response)
 
-        expect { details_client.get_details(valid_charter_number) }.to raise_error(NCUA::CreditUnion::ServerError)
+        expect { details_client.get_details(valid_charter_number) }.to raise_error(NCUA::CreditUnion::ServerError, "the NCUA returned a 500 error")
       end
     end
   end
