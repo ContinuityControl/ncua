@@ -6,8 +6,9 @@ module NCUA
 
       base_uri 'http://mapping.ncua.gov'
       def get_details(charter_number)
-        if charter_number.nil?
-          raise ArgumentError, "charter number cannot be nil"
+        charter_number = charter_number.to_s.strip
+        if charter_number.empty?
+          raise ArgumentError, "charter number cannot be nil or empty string"
         end
 
         response = execute_query(charter_number)

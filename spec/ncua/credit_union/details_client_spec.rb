@@ -24,10 +24,16 @@ describe NCUA::CreditUnion::DetailsClient do
     end
   end
 
-  describe 'nil charter numbers' do
+  describe 'bad charter numbers' do
     context 'when the charter number is nil' do
       it 'raises an argument error' do
         expect { details_client.get_details(nil) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'when the charter number is an empty string' do
+      it 'raises an argument error' do
+        expect { details_client.get_details("") }.to raise_error(ArgumentError)
       end
     end
   end
