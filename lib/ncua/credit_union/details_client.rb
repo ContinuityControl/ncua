@@ -18,6 +18,8 @@ module NCUA
           response
         when 500...600
           raise ServerError, "the NCUA returned a #{response.code} error"
+        else
+          raise ServerError, "Unexpected Response: #{response.code}"
         end
       end
 
