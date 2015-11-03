@@ -14,6 +14,10 @@ module NCUA
         end]
       end
 
+      def self.schema_valid?
+        return true
+      end
+
       private
 
       def clean_header(text)

@@ -9,6 +9,8 @@ require 'ncua/credit_union/scraper'
 require 'ncua/credit_union/details_client'
 
 module NCUA
+  require "ncua/railtie" if defined?(Rails)
+
   def self.find_office_by_address(address, opts={radius: 100})
     resp = Client.new.find_credit_union_by_address(address, opts[:radius])
     resp["list"].map { |result| CreditUnion::Office.new(result) }

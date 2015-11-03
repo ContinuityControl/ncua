@@ -25,6 +25,11 @@ module NCUA
         type: 'cunumber' })
     end
 
+    # return bool if all is well
+    def self.schema_valid?
+      false
+    end
+
     private
 
     def query_endpoint
