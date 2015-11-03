@@ -14,7 +14,7 @@ module NCUA
         end]
       end
 
-      def self.schema_valid?
+      def schema_valid?
         return true
       end
 

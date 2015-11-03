@@ -6,11 +6,11 @@ module NCUA
       namespace :ncua do
         desc "Verify Schema"
         task(:verify_schema) do
-          unless NCUA::CreditUnion::Scraper.schema_valid?
+          unless NCUA::CreditUnion::Scraper.new(42).schema_valid?
             raise "NCUA CreditUnion Scraper Schema is invalid. Please contact Gem Maintainer"
           end
 
-          unless NCUA::Client.schema_valid?
+          unless NCUA::Client.new.schema_valid?
             raise "NCUA Client Schema is invalid. Please contact Gem Maintainer"
           end
         end

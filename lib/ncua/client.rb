@@ -26,15 +26,28 @@ module NCUA
     end
 
     # return bool if all is well
-    def self.schema_valid?
-      false
+    def schema_valid?
+      base_fields_valid? && list_fields_valid?
     end
 
     private
 
+    def base_fields_valid?
+      types = ['cuname', 'cunumber', 'address']
+      expected_keys = ['list', 'latitude', 'longitude'].sort
+      valid = true
+
+      types.each do |type|
+        found_keys = self.class.get(query_endpoint, query: {
+          address: "somethingfake",
+          type: type }).keys.sort
+          valid = valid && (found_keys == expected_keys)
+      end
+    end
+
+
     def query_endpoint
       '/findCUByRadius.aspx'
     end
-
   end
 end
