@@ -7,6 +7,7 @@ require 'ncua/credit_union/record'
 require 'ncua/credit_union/office'
 require 'ncua/credit_union/details'
 require 'ncua/credit_union/scraper'
+require 'ncua/credit_union/scraper_validator'
 require 'ncua/credit_union/details_client'
 
 module NCUA
@@ -32,7 +33,7 @@ module NCUA
   end
 
   def self.validate_schema!
-    unless NCUA::CreditUnion::Scraper.new(42).schema_valid?
+    unless NCUA::CreditUnion::ScraperValidator.new.schema_valid?
       raise "NCUA CreditUnion Scraper Schema is invalid. Please contact Gem Maintainer"
     end
 
