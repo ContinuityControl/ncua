@@ -9,6 +9,7 @@ require 'ncua/credit_union/details'
 require 'ncua/credit_union/scraper'
 require 'ncua/credit_union/scraper_validator'
 require 'ncua/credit_union/details_client'
+require 'tasks/ncua_tasks'
 
 module NCUA
   require "ncua/railtie" if defined?(Rails)

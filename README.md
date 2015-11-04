@@ -131,8 +131,9 @@ Calling `NCUA.validate_schema!` will similarly return `true` if the gem is safe 
 The gem provides an internal rake task, `rake ncua:validate_schema!`, which calls `NCUA.validate_schema!`. For the convenience of Rails users, we have used a Railtie to automatically provide this rake task in your application.
 
 If you do not use Rails, you can add the following to your `Rakefile` to expose this task.
-```
-import "#{Gem::Specification.find_by_name('ncua').gem_dir}/lib/tasks/ncua.rake"
+```ruby
+require 'ncua'
+NCUA::NCUATasks.new.install_tasks
 ```
 
 ## Contributing
