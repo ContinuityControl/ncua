@@ -14,13 +14,9 @@ module NCUA
       end
 
       def has_correctly_formatted_key_value_rows?
-        value = true
-        key_value_rows.each do |tr|
-          tr_cells = tr.css("td")
-
-          value = (key_value_row?(tr_cells) || sub_header_row?(tr_cells))
-        end
-        value
+        key_value_rows.all? { |tr|
+          key_value_row?(tr.css("td")) || sub_header_row?(tr.css("td"))
+        }
       end
 
       def has_correct_keys?
