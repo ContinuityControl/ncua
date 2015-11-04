@@ -6,7 +6,7 @@ module NCUA
     format :json
     #debug_output $stderr
 
-    def find_credit_union_by_address(address, radius)
+    def find_credit_union_by_address(address, radius = 100)
       self.class.get(query_endpoint, query: {
         address: address,
         type: 'address',
