@@ -116,6 +116,25 @@ If for some reason the NCUA returns a 500 error when directly scraping for credi
 
 In fact, we only really expect response codes in the 200 range. If the NCUA returns another response, the gem will raise `NCUA::CreditUnion::ServerError` with the response code in the description.
 
+## Validating this Gem's Schema Assumptions
+
+This gem relies upon both the schema of an unpublished public JSON API and the particular markup of a page on the NCUA's website remaining constant.
+
+Obviously, this is a bad practice. Until the NCUA publishes a versioned, public API of their data, we will continue to rely upon these unorthodox methods of data retrieval.
+
+To help current users of this gem, we have provided an API for validating the assumed schema of the NCUA's data.
+
+Calling `NCUA.schema_valid?` will return `true` if the gem is safe to use. Note that this makes an actual call to the NCUA's endpoints, so be mindful of its use.
+
+Calling `NCUA.validate_schema!` will similarly return `true` if the gem is safe to use, but will raise a more detailed exception if the schema is invalid.
+
+The gem provides an internal rake task, `rake ncua:validate_schema!`, which calls `NCUA.validate_schema!`. For the convenience of Rails users, we have used a Railtie to automatically provide this rake task in your application.
+
+If you do not use Rails, you can add the following to your `Rakefile` to expose this task.
+```
+import "#{Gem::Specification.find_by_name('ncua').gem_dir}/lib/tasks/ncua.rake"
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ContinuityControl/ncua.
