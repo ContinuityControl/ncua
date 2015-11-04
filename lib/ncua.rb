@@ -2,6 +2,7 @@ require 'httparty'
 require 'nokogiri'
 require 'ncua/version'
 require 'ncua/client'
+require 'ncua/client_validator'
 require 'ncua/credit_union/record'
 require 'ncua/credit_union/office'
 require 'ncua/credit_union/details'
@@ -28,5 +29,21 @@ module NCUA
 
   def self.find_credit_union(charter_number)
     CreditUnion::Details.new(CreditUnion::Scraper.new(charter_number).scrape!)
+  end
+
+  def self.validate_schema!
+    unless NCUA::CreditUnion::Scraper.new(42).schema_valid?
+      raise "NCUA CreditUnion Scraper Schema is invalid. Please contact Gem Maintainer"
+    end
+
+    unless NCUA::ClientValidator.schema_valid?
+      raise "NCUA Client Schema is invalid. Please contact Gem Maintainer"
+    end
+
+    true
+  end
+
+  def self.schema_valid?
+    NCUA::CreditUnion::Scraper.new(42).schema_valid? && NCUA::ClientValidator.schema_valid?
   end
 end
