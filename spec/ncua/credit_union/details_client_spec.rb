@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe NCUA::CreditUnion::DetailsClient do
   let(:details_client) { NCUA::CreditUnion::DetailsClient.new }
+  let(:valid_charter_number) { 9009 }
+  let(:invalid_charter_number) { 234434 }
+  let(:good_response) { double("response", code: 200) }
+  let(:error_response) { double("response", code: 500) }
+  let(:redirect_response) { double("response", code: 302) }
   describe 'response code handling' do
-    let(:valid_charter_number) { 9009 }
-    let(:invalid_charter_number) { 234434 }
-    let(:good_response) { double("response", code: 200) }
-    let(:error_response) { double("response", code: 500) }
-    let(:redirect_response) { double("response", code: 302) }
     context 'when the response is 200' do
       it 'does not raise an exception' do
         allow(details_client).to receive(:execute_query).and_return(good_response)
