@@ -11,6 +11,10 @@ module NCUA
           raise ArgumentError, "charter number cannot be nil or empty string"
         end
 
+        if !(charter_number =~ /\A\d+\z/)
+          raise ArgumentError, "charter number must contain only digits"
+        end
+
         response = execute_query(charter_number)
 
         case response.code

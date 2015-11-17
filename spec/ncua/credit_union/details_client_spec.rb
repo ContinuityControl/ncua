@@ -52,4 +52,20 @@ describe NCUA::CreditUnion::DetailsClient do
       end
     end
   end
+
+  describe 'non-integer charter numbers' do
+    context 'when the charter number is non numeric' do
+      it 'raises an argument error' do
+        expect { details_client.get_details("foo") }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'when the charter number is a numeric string' do
+      it 'raises an argument error' do
+        allow(details_client).to receive(:execute_query).and_return(good_response)
+
+        expect { details_client.get_details("12345") }.not_to raise_error(ArgumentError)
+      end
+    end
+  end
 end
