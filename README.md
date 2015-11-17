@@ -112,6 +112,8 @@ If you pass `nil` into this method, it will raise an `ArgumentError`. The NCUA w
 
 If for some reason the NCUA returns a 500 error when directly scraping for credit union details, the gem will raise `NCUA::CreditUnion::ServerError`. This can happen if your charter number is invalid.
 
+In fact, we only really expect response codes in the 200 range. If the NCUA returns another response, the gem will raise `NCUA::CreditUnion::ServerError` with the response code in the description.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ContinuityControl/ncua.
