@@ -110,6 +110,8 @@ You can also scrape this directly from the NCUA module by calling `NCUA.find_cre
 
 If you pass `nil` into this method, it will raise an `ArgumentError`. The NCUA will actually return a 200 without a charter number, but the data on the page is blank.
 
+If you pass a non-numeric argument, such as `"foo"` into this method, it will also raise an `ArgumentError`.
+
 If for some reason the NCUA returns a 500 error when directly scraping for credit union details, the gem will raise `NCUA::CreditUnion::ServerError`. This can happen if your charter number is invalid.
 
 In fact, we only really expect response codes in the 200 range. If the NCUA returns another response, the gem will raise `NCUA::CreditUnion::ServerError` with the response code in the description.
