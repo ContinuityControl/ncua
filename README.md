@@ -2,7 +2,7 @@
 [![Test Coverage](https://codeclimate.com/github/ContinuityControl/ncua/badges/coverage.svg)](https://codeclimate.com/github/ContinuityControl/ncua/coverage)
 [![Build Status](https://travis-ci.org/ContinuityControl/ncua.svg)](https://travis-ci.org/ContinuityControl/ncua)
 [![Gem Version](https://badge.fury.io/rb/ncua.svg)](http://badge.fury.io/rb/ncua)
-# Ncua
+# NCUA
 
 The NCUA [lets you search for a credit union office](http://www.ncua.gov/NCUAMapping/Pages/NCUAGOVMapping.aspx) by name, address and charter number. Their site uses a JSON api behind their pages, to serve the data.
 
