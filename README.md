@@ -4,6 +4,9 @@
 [![Gem Version](https://badge.fury.io/rb/ncua.svg)](http://badge.fury.io/rb/ncua)
 # NCUA
 
+### Current API Status
+[![API Status](http://cc-api-schema-validator.herokuapp.com/ncua/badge)](http://cc-api-schema-validator.herokuapp.com/ncua/status)
+
 The NCUA [lets you search for a credit union office](http://www.ncua.gov/NCUAMapping/Pages/NCUAGOVMapping.aspx) by name, address and charter number. Their site uses a JSON api behind their pages, to serve the data.
 
 This gem is a ruby client to that API. It's totally unaffiliated with the NCUA.
