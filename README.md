@@ -136,6 +136,21 @@ require 'ncua'
 NCUA::NCUATasks.new.install_tasks
 ```
 
+Because the schema may change more suddenly than developers can check for, we've created a [very small application](https://github.com/ContinuityControl/api_schema_validator) that validates the schema of this gem and its sister gem, [fdic](https://github.com/ContinuityControl/fdic).
+
+The api_schema_validator application checks daily to see if the schema is invalid. It exposes a few handy endpoints, notably `/ncua/status`, which returns the follwing JSON:
+```json
+  {
+    "schema_good" : true
+  }
+  // OR
+  {
+    "schema_good" : false
+  }
+```
+
+and `/ncua/badge` which returns an svg status badge. In fact, you saw that badge at the top of this readme!
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ContinuityControl/ncua.
