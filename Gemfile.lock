@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ncua (0.10.2)
+    ncua (0.10.4)
       httparty (~> 0.16)
       nokogiri (~> 1.8)
 

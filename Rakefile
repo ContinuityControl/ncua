@@ -1,6 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 require './lib/tasks/ncua_tasks'
+require 'ncua'
 
 
 RSpec::Core::RakeTask.new(:spec)
