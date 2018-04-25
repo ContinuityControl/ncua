@@ -2,7 +2,7 @@ module NCUA
   class Client
     include HTTParty
 
-    base_uri 'http://mapping.ncua.gov'
+    base_uri 'https://mapping.ncua.gov'
     format :json
     #debug_output $stderr
 
