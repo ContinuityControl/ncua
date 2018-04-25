@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     ncua (0.10.1)
-      httparty (~> 0.13)
-      nokogiri (~> 1.6, >= 1.6.0)
+      httparty (~> 0.16)
+      nokogiri (~> 1.8)
 
 GEM
   remote: https://rubygems.org/
