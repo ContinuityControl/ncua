@@ -7,11 +7,11 @@ module NCUA
       end
 
       def scrape!
-        Hash[html_doc.at_css("table#MainContent_newDetails").css("tr").map do |tr|
+        Hash[html_doc.at_css("table#MainContent_newDetails").css("tr").map { |tr|
           if tr.at_css("td.dvHeader") && tr.at_css("td.dvHeader + td")
             [clean_header(tr.at_css("td.dvHeader").text), clean_value(tr.at_css("td.dvHeader + td").text)]
           end
-        end]
+        }.compact]
       end
 
       private
